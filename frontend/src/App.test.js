@@ -1,8 +1,19 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders the airport login page", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(
+    screen.getByText("Airport Check-in")
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByText("Passenger & Staff Portal")
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("button", { name: "Log in" })
+  ).toBeInTheDocument();
 });
