@@ -7,6 +7,7 @@ import {
 import LoginPage from "./pages/LoginPage";
 import PassengerDashboard from "./pages/PassengerDashboard";
 import StaffDashboard from "./pages/StaffDashboard";
+import UnauthorizedPage from "./pages/UnauthorizedPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         <Route
           path="/passenger/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Passenger"]}>
               <PassengerDashboard />
             </ProtectedRoute>
           }
@@ -27,10 +28,15 @@ function App() {
         <Route
           path="/staff/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Staff"]}>
               <StaffDashboard />
             </ProtectedRoute>
           }
+        />
+
+        <Route
+          path="/unauthorized"
+          element={<UnauthorizedPage />}
         />
       </Routes>
     </BrowserRouter>
